@@ -23,6 +23,11 @@ namespace Arena.Mirror
             _renderer.color = playerColor;
         }
 
+        private void OnDestroy()
+        {
+            Game.UnregisterPlayer(this);
+        }
+
         private void Update()
         {
             if (!isLocalPlayer)

@@ -6,12 +6,31 @@ namespace Arena
 {
     public static class Game
     {
-        private static readonly List<IPlayer> _players = new List<IPlayer>();
+        private static readonly Dictionary<IPlayer,Color> _colorsInGame = new Dictionary<IPlayer, Color>();
+        
+        private static readonly Stack<Color> _freeColors = new Stack<Color>
+        (new []{
+            Color.red,
+            Color.green,
+            Color.yellow,
+            Color.blue
+        });
 
         public static void RegisterPlayer(IPlayer player, out Color playerColor)
         {
-            _players.Add(player);
-            playerColor = GetPlayerColor(_players.Count);
+            _colorsInGame.Add(player,_freeColors.Pop());
+            playerColor = _colorsInGame[player];
+        }
+        
+        public static void UnregisterPlayer(IPlayer player)
+        {
+            if (!_colorsInGame.ContainsKey(player))
+            {
+                return;
+            }
+            
+            _freeColors.Push(_colorsInGame[player]);
+            _colorsInGame.Remove(player);
         }
 
         private static Color GetPlayerColor(int playerNumber)

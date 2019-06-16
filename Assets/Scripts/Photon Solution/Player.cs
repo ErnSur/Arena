@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Arena.Photon
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IPlayer
     {
         private const string _verticalAxisName = "Vertical";
         private const string _horizontalAxisName = "Horizontal";
@@ -22,8 +22,13 @@ namespace Arena.Photon
         {
             _photonView = GetComponent<PhotonView>();
             Debug.Log($"Player {_photonView.Owner.ActorNumber} Joined");
-            
-            _renderer.color = Game.GetPlayerColor(_photonView.Owner.ActorNumber);
+            Game.RegisterPlayer(this, out var playerColor);
+            _renderer.color = playerColor;
+        }
+
+        private void OnDestroy()
+        {
+            Game.UnregisterPlayer(this);
         }
 
         void Update()
