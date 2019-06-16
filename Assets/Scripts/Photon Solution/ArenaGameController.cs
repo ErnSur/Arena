@@ -5,7 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
-namespace Arena
+namespace Arena.Photon
 {
     public class ArenaGameController : MonoBehaviourPunCallbacks
     {
@@ -60,37 +60,5 @@ namespace Arena
             }
         }
     }
-
-    // Synced Between players
-    public static class Game
-    {
-        public static Player[] PresentPlayers;
-
-        public static Player ActiveTurn = Player.None;
-
-        public static Color GetPlayerColor(int playerNumber)
-        {
-            switch (playerNumber)
-            {
-                default:
-                case 1:
-                    return Color.red;
-                case 2:
-                    return Color.green;
-                case 3:
-                    return Color.yellow;
-                case 4:
-                    return Color.blue;
-            }
-        }
-        
-        public enum Player
-        {
-            None,
-            Red,
-            Green,
-            Yellow,
-            Blue
-        }
-    }
+    
 }

@@ -4,7 +4,7 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Arena.UI
+namespace Arena.Photon.UI
 {
     public class EndTurnButton : MonoBehaviour
     {
