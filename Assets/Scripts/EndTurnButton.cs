@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Arena.UI
 {
-    // For Each Player
-    [RequireComponent(typeof(Button))]
     public class EndTurnButton : MonoBehaviour
     {
         [SerializeField]
@@ -15,31 +14,12 @@ namespace Arena.UI
         private void Awake()
         {
             _button = GetComponent<Button>();
+            _button.onClick.AddListener(OnClick);
         }
 
         private void OnClick()
         {
-            
-        }
-    }
-}
-
-namespace Arena
-{
-    // Synced Between players
-    public static class Game
-    {
-        public static Player[] PresentPlayers;
-
-        public static Player ActiveTurn = Player.None;
-        
-        public enum Player
-        {
-            None,
-            Red,
-            Green,
-            Yellow,
-            Blue
+            Debug.Log($"Button was Clicked");
         }
     }
 }

@@ -25,24 +25,13 @@ namespace Photon.Pun.Demo.PunBasics
 	/// </summary>
 	public class GameManager : MonoBehaviourPunCallbacks
     {
-
-		#region Public Fields
-
 		static public GameManager Instance;
-
-		#endregion
-
-		#region Private Fields
 
 		private GameObject instance;
 
         [Tooltip("The prefab to use for representing the player")]
         [SerializeField]
         private GameObject playerPrefab;
-
-        #endregion
-
-        #region MonoBehaviour CallBacks
 
         /// <summary>
         /// MonoBehaviour method called on GameObject by Unity during initialization phase.
@@ -92,8 +81,6 @@ namespace Photon.Pun.Demo.PunBasics
 				QuitApplication();
 			}
 		}
-
-        #endregion
 
         #region Photon Callbacks
 
