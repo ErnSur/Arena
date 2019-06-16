@@ -19,6 +19,8 @@ namespace Arena.Photon
         private PhotonView _photonView;
 
         public Color Color { get; set; }
+        
+        public bool isLocalPlayer => _photonView.IsMine;
 
         private void Awake()
         {

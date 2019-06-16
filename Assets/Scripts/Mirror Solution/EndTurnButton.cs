@@ -15,6 +15,8 @@ namespace Arena.Mirror.UI
         {
             _button = GetComponent<Button>();
             _button.onClick.AddListener(OnClick);
+            
+            
         }
 
         private void OnClick()
