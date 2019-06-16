@@ -68,6 +68,22 @@ namespace Arena
 
         public static Player ActiveTurn = Player.None;
 
+        public static Color GetPlayerColor(int playerNumber)
+        {
+            switch (playerNumber)
+            {
+                default:
+                case 1:
+                    return Color.red;
+                case 2:
+                    return Color.green;
+                case 3:
+                    return Color.yellow;
+                case 4:
+                    return Color.blue;
+            }
+        }
+        
         public enum Player
         {
             None,

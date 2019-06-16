@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Arena
 {
@@ -12,10 +11,28 @@ namespace Arena
         private const string _horizontalAxisName = "Horizontal";
 
         [SerializeField]
+        private SpriteRenderer _renderer;
+
+        [SerializeField]
         private float _speed = 0.3f;
+
+        private PhotonView _photonView;
+
+        private void Awake()
+        {
+            _photonView = GetComponent<PhotonView>();
+            Debug.Log($"Player {_photonView.Owner.ActorNumber} Joined");
+            
+            _renderer.color = Game.GetPlayerColor(_photonView.Owner.ActorNumber);
+        }
 
         void Update()
         {
+            if (!_photonView.IsMine)
+            {
+                return;
+            }
+            
             var verticalMovement = Input.GetAxis(_verticalAxisName);
             var horizontalMovement = Input.GetAxis(_horizontalAxisName);
             
