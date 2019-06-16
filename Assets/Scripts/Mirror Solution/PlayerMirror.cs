@@ -17,15 +17,17 @@ namespace Arena.Mirror
         [SerializeField]
         private float _speed = 0.3f;
         
+        public Color Color { get; set; }
+
         private void Awake()
         {
-            Game.RegisterPlayer(this, out var playerColor);
-            _renderer.color = playerColor;
+            GameState.RegisterPlayer(this);
+            _renderer.color = Color;
         }
 
         private void OnDestroy()
         {
-            Game.UnregisterPlayer(this);
+            GameState.UnregisterPlayer(this);
         }
 
         private void Update()

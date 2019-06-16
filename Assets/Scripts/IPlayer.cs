@@ -1,4 +1,9 @@
+using UnityEngine;
+
 namespace Arena
 {
-    public interface IPlayer { }
+    public interface IPlayer
+    {
+        Color Color { get; set; }
+    }
 }

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Arena
+namespace Arena.Photon
 {
-    public static class Game
+    public static partial class Game
     {
         private static readonly Dictionary<IPlayer,Color> _colorsInGame = new Dictionary<IPlayer, Color>();
         
