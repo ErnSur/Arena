@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Arena
 {
-    public class Player : MonoBehaviourPunCallbacks
+    public class Player : MonoBehaviour
     {
         private const string _verticalAxisName = "Vertical";
         private const string _horizontalAxisName = "Horizontal";
